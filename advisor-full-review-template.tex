@@ -1,0 +1,188 @@
+% Данный файл распространяется под лицензией CC BY 4.0. Текст лицензии размещён на https://creativecommons.org/licenses/by/4.0/
+% (c) Кафедра системного программирования, 2026
+
+% Компилировать XeTeX
+
+% Содержательная часть отзыва: поля, которые надо заполнить
+
+% Тип практики, вставляется во фразу "отчёт ... практике". Бывает учебная, производственная, преддипломная, педагогическая.
+\def\practiceType{об учебной}
+
+% ФИО (полное) студента
+\def\studentName{Фамилия Имя Отчество В Родительном Падеже}
+
+% тема практики как на титульнике
+\def\practiceTitle{Тема учебной практики}
+
+% Семестр, за который практика
+\def\practiceSemester{второй}
+
+% Оценки по критериям
+
+% Оценка по критерию "Цель практики достигнута полностью", от 1 (совсем нет) до 5 (абсолютно да)
+\def\completenessGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\completenessComment{}
+
+% Оценка по критерию "Этапы работы выполнялись в ожидаемые сроки, работа велась непрерывно в течение семестра", от 1 (совсем нет) до 5 (абсолютно да)
+\def\continuityGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\continuityComment{}
+
+% Оценка по критерию "Отчётность была регулярной, коммуникации с научным руководителем были не реже раза в неделю", от 1 (совсем нет) до 5 (абсолютно да)
+\def\communicationsGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\communicationsComment{}
+
+% Оценка по критерию "Уровень общей технической грамотности и самостоятельности обучающегося соответствовал ожиданиям, необходимости в разъяснении очевидных вещей не возникало", от 1 (совсем нет) до 5 (абсолютно да)
+\def\competenceGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\competenceComment{}
+
+% Оценка по критерию "Получившийся код соответствует ожиданиям по качеству", от 1 (совсем нет) до 5 (абсолютно да)
+\def\codeGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\codeComment{}
+
+% Оценка по критерию "Замечания своевременно и полностью исправлялись", от 1 (совсем нет) до 5 (абсолютно да)
+\def\fixesGrade{5}
+
+% Комментарий по критерию в свободной форме (оставьте пустым, если нет)
+\def\fixesComment{}
+
+% Результат работы: 
+% pullrequest — должен был быть сделан пуллреквест в существующий репозиторий
+% newRepo — должен был быть создан новый репозиторий
+% nda — код есть, но закрыт
+% что угодно другое, включая пустое значение — кода не предполагалось
+\def\contributionType{pullrequest}
+
+% Есть ли внятное описание проекта в README или пуллреквеста в пуллреквесте. "yes", если да, что угодно ещё, если нет.
+\def\projectDescription{yes}
+
+% Есть ли модульные тесты. "yes", если да, что угодно ещё, если нет.
+\def\tests{yes}
+
+% Есть ли CI с настроенным линтером, в котором проходят и модульные тесты (игнорируется, если речь про пуллреквест). "yes", если да, что угодно ещё, если нет.
+\def\ciWithLinter{yes}
+
+% Замерджен ли пуллреквест в основную ветку (игнорируется, если речь про отдельный репозиторий). "yes", если да, что угодно ещё, если нет.
+\def\merged{yes}
+
+% Развёрнут ли проект (игнорируется, если речь про пуллреквест). "yes", если да, что угодно ещё, если нет.
+\def\deployed{yes}
+
+% Итоговая оценка
+\def\grade{A}
+
+% Комментарий к итоговой оценке, если надо. Если нет, оставьте пустым.
+\def\gradeComment{}
+
+% Информация о научном руководителе
+\def\advisorJobTitle{должность научного руководителя}
+\def\advisorScientificDegree{учёная степень, учёное звание}
+\def\advisorName{ФИО научного руководителя}
+
+% Генерируемая часть отзыва, тут трогать по идее ничего не надо
+
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper, top=8mm, bottom=8mm, left=8mm, right=8mm]{geometry}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[babelshorthands=true]{russian}
+\setotherlanguage{english}
+
+\usepackage{fontspec}
+\setmainfont{FreeSerif}
+\newfontfamily{\russianfonttt}[Scale=1]{DejaVuSansMono}
+
+\usepackage[tiny, compact]{titlesec}
+
+\usepackage{titling}
+\setlength{\droptitle}{-1cm}
+\pretitle{\begin{center}\begin{bfseries}\Large}
+\posttitle{\par\end{bfseries}\end{center}}
+\preauthor{\begin{center}\normalsize}
+\postauthor{\par\end{center}\vspace{-1.8cm}}
+
+\usepackage{csquotes}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+
+\newcommand{\checkmarkEntry}[1]{%
+    \ifdefstring{#1}{yes}{\def\mark{☑}}{\def\mark{☐}}%
+    \mark
+}
+
+\title{Отзыв научного руководителя \practiceType\ практике обучающегося \studentName\ на тему \enquote{\practiceTitle} за \practiceSemester\ семестр}
+
+\author{}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Оценка по шкале от 1 до 5 критериев выполнения практики:
+
+\begin{enumerate}
+    \item Цель практики достигнута полностью: \newline
+        \textbf{\completenessGrade}\ifdefempty{\completenessComment}{}{, комментарий: \textit{\completenessComment}}
+    \item Этапы работы выполнялись в ожидаемые сроки, работа велась непрерывно в течение семестра: \newline
+        \textbf{\continuityGrade}\ifdefempty{\continuityComment}{}{, комментарий: \textit{\continuityComment}}
+    \item Отчётность была регулярной, коммуникации с научным руководителем были не реже раза в неделю: \newline
+        \textbf{\communicationsGrade}\ifdefempty{\communicationsComment}{}{, комментарий: \textit{\communicationsComment}}
+    \item Уровень общей технической грамотности и самостоятельности обучающегося соответствовал ожиданиям, необходимости в разъяснении очевидных вещей не возникало: \newline
+        \textbf{\competenceGrade}\ifdefempty{\competenceComment}{}{, комментарий: \textit{\competenceComment}}
+    \item Получившийся код соответствует ожиданиям по качеству: \newline
+        \textbf{\codeGrade}\ifdefempty{\codeComment}{}{, комментарий: \textit{\codeComment}}
+    \item Замечания своевременно и полностью исправлялись: \newline
+        \textbf{\fixesGrade}\ifdefempty{\fixesComment}{}{, комментарий: \textit{\fixesComment}}
+\end{enumerate}
+
+\ifdefstring{\contributionType}{pullrequest}{
+    Работа предполагала пуллреквест в существующий репозиторий:
+    \begin{itemize}
+        \item[\checkmarkEntry{\projectDescription}] есть внятное описание пуллреквеста с технической документацией
+        \item[\checkmarkEntry{\tests}] есть модульные тесты на новую функциональность
+        \item[\checkmarkEntry{\merged}] изменения приняты в основную ветку
+    \end{itemize}
+}{
+    \ifdefstring{\contributionType}{newRepo}{
+        Работа предполагала создание нового репозитория:
+        \begin{itemize}
+            \item[\checkmarkEntry{\projectDescription}] есть внятное описание проекта в README с техническим описанием, инструкцией по сборке и запуску, примеры использования
+            \item[\checkmarkEntry{\tests}] настроен CI с модульными тестами и линтером
+            \item[\checkmarkEntry{\ciWithLinter}] настроен CI с модульными тестами и линтером
+            \item[\checkmarkEntry{\deployed}] проект развёрнут и используется
+        \end{itemize}
+    }{
+        \ifdefstring{\contributionType}{nda}{
+            Код находится под договором о неразглашении.
+        }{
+            Программная реализация в рамках практики не предполагалась.
+        }
+    }
+}
+
+Итого рекомендуемая оценка: \textbf{ECTS \grade}.
+
+\ifdefempty{\gradeComment}{}{Комментарий к оценке: \gradeComment}
+
+\begin{flushright}
+    Дата: \today
+\end{flushright}
+
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+    Научный руководитель: & \underline{\hspace{2cm}}\ \ /\advisorJobTitle,\\
+                          & \advisorScientificDegree\ \advisorName. \\
+\end{tabularx}
+
+\end{document}
