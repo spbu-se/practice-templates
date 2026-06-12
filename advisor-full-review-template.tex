@@ -120,7 +120,8 @@
     \mark
 }
 
-\title{Отзыв научного руководителя \practiceType\ практике обучающегося \studentName\ на тему \enquote{\practiceTitle} за \practiceSemester\ семестр}
+\title{Отзыв научного руководителя \practiceType\ практике обучающегося\newline
+\studentName\ на тему \enquote{\practiceTitle} за \practiceSemester\ семестр}
 
 \author{}
 
@@ -134,17 +135,17 @@
 
 \begin{enumerate}
     \item Цель практики достигнута полностью: \newline
-        \textbf{\completenessGrade}\ifdefempty{\completenessComment}{}{, комментарий: \textit{\completenessComment}}
+        \textbf{\completenessGrade}\ifdefempty{\completenessComment}{}{, комментарий: \textit{\completenessComment}}.
     \item Этапы работы выполнялись в ожидаемые сроки, работа велась непрерывно в течение семестра: \newline
-        \textbf{\continuityGrade}\ifdefempty{\continuityComment}{}{, комментарий: \textit{\continuityComment}}
+        \textbf{\continuityGrade}\ifdefempty{\continuityComment}{}{, комментарий: \textit{\continuityComment}}.
     \item Отчётность была регулярной, коммуникации с научным руководителем были не реже раза в неделю: \newline
-        \textbf{\communicationsGrade}\ifdefempty{\communicationsComment}{}{, комментарий: \textit{\communicationsComment}}
+        \textbf{\communicationsGrade}\ifdefempty{\communicationsComment}{}{, комментарий: \textit{\communicationsComment}}.
     \item Уровень общей технической грамотности и самостоятельности обучающегося соответствовал ожиданиям, необходимости в разъяснении очевидных вещей не возникало: \newline
-        \textbf{\competenceGrade}\ifdefempty{\competenceComment}{}{, комментарий: \textit{\competenceComment}}
+        \textbf{\competenceGrade}\ifdefempty{\competenceComment}{}{, комментарий: \textit{\competenceComment}}.
     \item Получившийся код соответствует ожиданиям по качеству: \newline
-        \textbf{\codeGrade}\ifdefempty{\codeComment}{}{, комментарий: \textit{\codeComment}}
+        \textbf{\codeGrade}\ifdefempty{\codeComment}{}{, комментарий: \textit{\codeComment}}.
     \item Замечания своевременно и полностью исправлялись: \newline
-        \textbf{\fixesGrade}\ifdefempty{\fixesComment}{}{, комментарий: \textit{\fixesComment}}
+        \textbf{\fixesGrade}\ifdefempty{\fixesComment}{}{, комментарий: \textit{\fixesComment}}.
 \end{enumerate}
 
 \ifdefstring{\contributionType}{pullrequest}{
@@ -159,7 +160,7 @@
         Работа предполагала создание нового репозитория:
         \begin{itemize}
             \item[\checkmarkEntry{\projectDescription}] есть внятное описание проекта в README с техническим описанием, инструкцией по сборке и запуску, примеры использования
-            \item[\checkmarkEntry{\tests}] настроен CI с модульными тестами и линтером
+            \item[\checkmarkEntry{\tests}] есть модульные тесты
             \item[\checkmarkEntry{\ciWithLinter}] настроен CI с модульными тестами и линтером
             \item[\checkmarkEntry{\deployed}] проект развёрнут и используется
         \end{itemize}
@@ -174,7 +175,7 @@
 
 Итого рекомендуемая оценка: \textbf{ECTS \grade}.
 
-\ifdefempty{\gradeComment}{}{Комментарий к оценке: \gradeComment}
+\ifdefempty{\gradeComment}{}{Комментарий к оценке: \gradeComment.}
 
 \begin{flushright}
     Дата: \today
